@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#define F_CPU 1600000UL
+#define F_CPU 16000000UL
 #include<util/delay.h>
 int main(void)
 //8 LED lit up in a particular pattern
