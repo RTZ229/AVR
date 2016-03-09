@@ -1,0 +1,30 @@
+#define F_CPU 1000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+#include <math.h>
+
+int main(void)
+{
+	float i = 0;
+	DDRB = 0xff;//port B as output ocr0 is on PB3 
+	TCCR0 |= (1<<WGM01)|(1<<WGM00)|(1<<CS00)|(1<<COM01);//setting up the timer/counter control register 
+	while(1){
+		// main program under this loop
+		
+	for(i=0;i<1.57;)
+	{
+		OCR0 = 255*sin(i); //ocr0 values change according to sin function
+		_delay_ms(1); //a delay so that we can observe the change
+		i+=0.001;  // incrementing the value of i by 0.01
+	}
+	
+	for(i=1.57;i>=0;)// same as above only change being it decreases
+	{
+	OCR0 = 255*sin(i);
+	_delay_ms(1);
+	i-=0.001;
+	}
+	
+	
+	}
+}
